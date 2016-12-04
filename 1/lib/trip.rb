@@ -3,7 +3,6 @@ require_relative 'position'
 class Trip
   attr_reader :current_bearing
   attr_reader :visited_positions
-  attr_accessor :first_visited_twice
 
   def initialize(initial_position = Position.new)
     @current_bearing = :north

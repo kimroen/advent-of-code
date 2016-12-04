@@ -12,6 +12,6 @@ task :result do
   finder = HqFinder.new
   finder.simulate_trip(input)
 
-  puts "The HQ is #{finder.last_position} blocks away"
-  puts "The place we first visit twice is #{finder.first_visited_twice} blocks away"
+  puts "The HQ is #{finder.last_position_distance} blocks away"
+  puts "The place we first visit twice is #{finder.first_visited_twice_distance} blocks away"
 end

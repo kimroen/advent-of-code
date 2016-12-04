@@ -13,12 +13,19 @@ class HqFinder
     trip.simulate(directions)
   end
 
-  def last_position
+  def last_position_distance
     trip.current_position.distance_to_origin
   end
 
-  def first_visited_twice
-    # Somehow get the place first visited twice from the trip
-    trip.first_visited_twice.distance_to_origin
+  def first_visited_twice_distance
+    checked_positions = []
+
+    trip.visited_positions.each do |position|
+      if checked_positions.include? position
+        return position.distance_to_origin
+      else
+        checked_positions << position
+      end
+    end
   end
 end
