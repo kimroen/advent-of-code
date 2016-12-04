@@ -1,0 +1,2 @@
+class DirectionParser
+end
