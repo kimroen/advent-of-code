@@ -5,3 +5,5 @@ input = 'L2, L5, L5, R5, L2, L4, R1, R1, L4, R2, R1, L1, L4, R1, L4, L4, R5, R3,
 finder = HqFinder.find(input)
 
 puts "The HQ is #{finder.endpoint.blocks_away} blocks away"
+
+puts "The place we first visit twice is #{finder.first_visited_twice.blocks_away} blocks away"

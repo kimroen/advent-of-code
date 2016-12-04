@@ -2,6 +2,7 @@ require_relative 'tracer'
 
 class HqFinder
   attr_reader :tracer
+  attr_accessor :first_visited_twice
 
   def self.find(directions_string)
     new.find(directions_string)
@@ -14,8 +15,18 @@ class HqFinder
   def find(directions_string)
     directions = convert_to_directions(directions_string)
 
+    visited_locations = []
+
     directions.each do |direction|
       tracer.move(direction)
+      current_position = tracer.current_position.clone
+      next unless first_visited_twice.nil?
+
+      if visited_locations.include? current_position
+        self.first_visited_twice = tracer.clone
+      else
+        visited_locations << current_position
+      end
     end
 
     self

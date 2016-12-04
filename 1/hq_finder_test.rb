@@ -33,6 +33,10 @@ class HqFinderTest < Minitest::Test
     finder = HqFinder.find('R5, L5, R5, R3')
     assert_equal 12, finder.endpoint.blocks_away
   end
+
+  def test_it_provides_the_location_first_visited_twice
+    finder = HqFinder.find('R8, R4, R4, R8')
+    assert_equal 4, finder.first_visited_twice.blocks_away
   end
 end
 
