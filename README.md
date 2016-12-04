@@ -1,4 +1,4 @@
-This is my solutions for the 2016 Advent of Code.
+These are my solutions for the 2016 Advent of Code.
 
 http://adventofcode.com
 
