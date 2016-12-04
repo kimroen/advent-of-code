@@ -3,37 +3,22 @@ require_relative 'direction_parser'
 
 class HqFinder
   attr_reader :trip
-  attr_accessor :first_visited_twice
-
-  def self.preview_trip(directions_string)
-    new.preview_trip(directions_string)
-  end
 
   def initialize
     @trip = Trip.new
   end
 
-  def preview_trip(directions_string)
+  def simulate_trip(directions_string)
     directions = DirectionParser.new(directions_string).parse
-
-    visited_positions = []
-
-    directions.each do |direction|
-      trip.move(direction)
-      current_position = trip.current_position
-      next unless first_visited_twice.nil?
-
-      if visited_positions.include? current_position
-        self.first_visited_twice = current_position
-      else
-        visited_positions << current_position
-      end
-    end
-
-    self
+    trip.simulate(directions)
   end
 
   def last_position
-    trip.current_position
+    trip.current_position.distance_to_origin
+  end
+
+  def first_visited_twice
+    # Somehow get the place first visited twice from the trip
+    trip.first_visited_twice.distance_to_origin
   end
 end

@@ -3,10 +3,26 @@ require 'position'
 class Trip
   attr_reader :current_position
   attr_reader :current_heading
+  attr_accessor :first_visited_twice
 
   def initialize(initial_position = Position.new)
     @current_position = initial_position
     @current_heading = :north
+  end
+
+  def simulate(directions)
+    visited_positions = []
+
+    directions.each do |direction|
+      move(direction)
+      next unless first_visited_twice.nil?
+
+      if visited_positions.include? current_position
+        self.first_visited_twice = current_position
+      else
+        visited_positions << current_position
+      end
+    end
   end
 
   def current_coordinates
