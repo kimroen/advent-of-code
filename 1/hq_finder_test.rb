@@ -56,32 +56,38 @@ class TracerTest < Minitest::Test
     assert_equal :south, tracer.current_heading
   end
 
+  def test_it_can_walk_multiple_steps
+    tracer = Tracer.new
+    tracer.apply_steps(5)
+    assert_equal({ x: 0, y: 5 }, tracer.current_position)
+  end
+
   def test_it_can_move_north
     tracer = Tracer.new
-    tracer.apply_steps(4)
-    assert_equal({ x: 0, y: 4 }, tracer.current_position)
+    tracer.walk_one_block
+    assert_equal({ x: 0, y: 1 }, tracer.current_position)
   end
 
   def test_it_can_move_west
     tracer = Tracer.new
     tracer.apply_heading(:left)
-    tracer.apply_steps(4)
-    assert_equal({ x: -4, y: 0 }, tracer.current_position)
+    tracer.walk_one_block
+    assert_equal({ x: -1, y: 0 }, tracer.current_position)
   end
 
   def test_it_can_move_south
     tracer = Tracer.new
     tracer.apply_heading(:right)
     tracer.apply_heading(:right)
-    tracer.apply_steps(4)
-    assert_equal({ x: 0, y: -4 }, tracer.current_position)
+    tracer.walk_one_block
+    assert_equal({ x: 0, y: -1 }, tracer.current_position)
   end
 
   def test_it_can_move_east
     tracer = Tracer.new
     tracer.apply_heading(:right)
-    tracer.apply_steps(4)
-    assert_equal({ x: 4, y: 0 }, tracer.current_position)
+    tracer.walk_one_block
+    assert_equal({ x: 1, y: 0 }, tracer.current_position)
   end
 
   def test_it_can_move_steps

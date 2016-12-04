@@ -30,15 +30,21 @@ class Tracer
   end
 
   def apply_steps(steps)
+    steps.times do
+      walk_one_block
+    end
+  end
+
+  def walk_one_block
     case current_heading
     when :north
-      current_position[:y] += steps
+      current_position[:y] += 1
     when :west
-      current_position[:x] -= steps
+      current_position[:x] -= 1
     when :south
-      current_position[:y] -= steps
+      current_position[:y] -= 1
     when :east
-      current_position[:x] += steps
+      current_position[:x] += 1
     end
   end
 
