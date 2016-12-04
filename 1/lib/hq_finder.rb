@@ -14,7 +14,7 @@ class HqFinder
   end
 
   def last_position
-    trip.visited_positions.last.distance_to_origin
+    trip.current_position.distance_to_origin
   end
 
   def first_visited_twice
