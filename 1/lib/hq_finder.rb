@@ -33,7 +33,7 @@ class HqFinder
   end
 
   def last_position
-    tracer
+    tracer.current_position
   end
 
   def convert_to_directions(directions_string)

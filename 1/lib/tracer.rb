@@ -13,10 +13,6 @@ class Tracer
     current_position.coordinates
   end
 
-  def blocks_away
-    current_position.distance_to(Position.new)
-  end
-
   def move(direction)
     case direction
     when Symbol
