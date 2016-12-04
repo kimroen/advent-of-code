@@ -23,4 +23,13 @@ class PositionTest < Minitest::Test
     expected_coordinates = { x: 0, y: 1 }
     assert_equal expected_coordinates, position.coordinates
   end
+
+  def test_it_can_walk_south
+    position = Position.new
+
+    position.walk(:south)
+
+    expected_coordinates = { x: 0, y: -1 }
+    assert_equal expected_coordinates, position.coordinates
+  end
 end

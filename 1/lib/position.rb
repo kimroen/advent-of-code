@@ -10,8 +10,13 @@ class Position
     { x: x, y: y }
   end
 
-  def walk(_direction)
-    self.y += 1
+  def walk(direction)
+    case direction
+    when :north
+      self.y += 1
+    when :south
+      self.y -= 1
+    end
   end
 
   private
