@@ -21,17 +21,18 @@ class HqFinderTest < Minitest::Test
 
   def test_it_finds_distance
     finder = HqFinder.find('R2, L3')
-    assert_equal 5, finder.blocks_away
+    assert_equal 5, finder.endpoint.blocks_away
   end
 
   def test_it_finds_another_distance
     finder = HqFinder.find('R2, R2, R2')
-    assert_equal 2, finder.blocks_away
+    assert_equal 2, finder.endpoint.blocks_away
   end
 
   def test_it_finds_a_third_distance
     finder = HqFinder.find('R5, L5, R5, R3')
-    assert_equal 12, finder.blocks_away
+    assert_equal 12, finder.endpoint.blocks_away
+  end
   end
 end
 

@@ -21,8 +21,8 @@ class HqFinder
     self
   end
 
-  def blocks_away
-    tracer.blocks_away
+  def endpoint
+    tracer
   end
 
   def convert_to_directions(directions_string)
