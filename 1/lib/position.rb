@@ -33,4 +33,8 @@ class Position
 
     x_distance.abs + y_distance.abs
   end
+
+  def calculate_distance_to_origin
+    calculate_distance_to(Position.new)
+  end
 end

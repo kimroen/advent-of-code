@@ -59,4 +59,12 @@ class PositionTest < Minitest::Test
 
     assert_equal 7, result
   end
+
+  def test_it_can_calculate_distance_to_origin
+    position = Position.new(x: 2, y: 4)
+
+    result = position.calculate_distance_to_origin
+
+    assert_equal 6, result
+  end
 end
