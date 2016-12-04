@@ -1,4 +1,4 @@
-require_relative 'tracer'
+require 'tracer'
 
 class HqFinder
   attr_reader :tracer

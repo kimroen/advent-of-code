@@ -3,7 +3,8 @@ gem 'minitest', '>=5'
 require 'minitest/autorun'
 require 'minitest/pride'
 
-require_relative 'hq_finder'
+require 'tracer'
+require 'hq_finder'
 
 class HqFinderTest < Minitest::Test
   def test_it_can_convert_string_to_directions
