@@ -1,4 +1,4 @@
-require 'position'
+require_relative 'position'
 
 class Trip
   attr_reader :current_position
