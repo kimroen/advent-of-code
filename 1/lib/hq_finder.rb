@@ -15,17 +15,17 @@ class HqFinder
   def preview_trip(directions_string)
     directions = convert_to_directions(directions_string)
 
-    visited_locations = []
+    visited_positions = []
 
     directions.each do |direction|
       tracer.move(direction)
-      current_position = tracer.current_position.clone
+      current_position = tracer.current_position
       next unless first_visited_twice.nil?
 
-      if visited_locations.include? current_position
-        self.first_visited_twice = tracer.clone
+      if visited_positions.include? current_position
+        self.first_visited_twice = current_position
       else
-        visited_locations << current_position
+        visited_positions << current_position
       end
     end
 
