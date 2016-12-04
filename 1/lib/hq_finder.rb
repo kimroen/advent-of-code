@@ -1,7 +1,7 @@
-require_relative 'tracer'
+require_relative 'trip'
 
 class HqFinder
-  attr_reader :tracer
+  attr_reader :trip
   attr_accessor :first_visited_twice
 
   def self.preview_trip(directions_string)
@@ -9,7 +9,7 @@ class HqFinder
   end
 
   def initialize
-    @tracer = Tracer.new
+    @trip = Trip.new
   end
 
   def preview_trip(directions_string)
@@ -18,8 +18,8 @@ class HqFinder
     visited_positions = []
 
     directions.each do |direction|
-      tracer.move(direction)
-      current_position = tracer.current_position
+      trip.move(direction)
+      current_position = trip.current_position
       next unless first_visited_twice.nil?
 
       if visited_positions.include? current_position
@@ -33,7 +33,7 @@ class HqFinder
   end
 
   def last_position
-    tracer.current_position
+    trip.current_position
   end
 
   def convert_to_directions(directions_string)

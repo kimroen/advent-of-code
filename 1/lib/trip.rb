@@ -1,6 +1,6 @@
 require 'position'
 
-class Tracer
+class Trip
   attr_reader :current_position
   attr_reader :current_heading
 
