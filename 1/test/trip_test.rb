@@ -4,6 +4,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 require 'trip'
+require 'position'
 
 class TripTest < Minitest::Test
   def test_it_starts_pointing_north
@@ -76,5 +77,22 @@ class TripTest < Minitest::Test
     trip = Trip.new
     expected_coordinates = { x: 0, y: 0 }
     assert_equal expected_coordinates, trip.current_coordinates
+  end
+
+  def test_it_keeps_track_of_positions
+    trip = Trip.new
+
+    trip.simulate([2, :left, 3])
+
+    expected_history = [
+      Position.new(x: 0, y: 0),
+      Position.new(x: 0, y: 1),
+      Position.new(x: 0, y: 2),
+      Position.new(x: -1, y: 2),
+      Position.new(x: -2, y: 2),
+      Position.new(x: -3, y: 2)
+    ]
+
+    assert_equal expected_history, trip.visited_positions
   end
 end
