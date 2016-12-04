@@ -56,7 +56,6 @@ class Trip
   private
 
   attr_writer :current_bearing
-  attr_writer :current_position
 
   def current_position=(new_position)
     visited_positions << new_position
