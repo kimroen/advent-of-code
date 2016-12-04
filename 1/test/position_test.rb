@@ -50,4 +50,13 @@ class PositionTest < Minitest::Test
     expected_coordinates = { x: -1, y: 0 }
     assert_equal expected_coordinates, new_position.coordinates
   end
+
+  def test_it_can_calculate_distance_to_other_position
+    position = Position.new
+    other_position = Position.new(x: 5, y:-2)
+
+    result = position.calculate_distance_to(other_position)
+
+    assert_equal 7, result
+  end
 end
