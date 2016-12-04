@@ -26,7 +26,7 @@ class TripTest < Minitest::Test
 
   def test_it_can_walk_multiple_steps
     trip = Trip.new
-    trip.apply_steps(5)
+    trip.walk(5)
     assert_equal({ x: 0, y: 5 }, trip.current_coordinates)
   end
 

@@ -34,7 +34,7 @@ class Trip
     when Symbol
       turn(direction)
     when Numeric
-      apply_steps(direction)
+      walk(direction)
     end
   end
 
@@ -47,7 +47,7 @@ class Trip
       end
   end
 
-  def apply_steps(steps)
+  def walk(steps)
     steps.times do
       walk_one_block
     end
