@@ -27,14 +27,14 @@ class Position
     new_position
   end
 
-  def calculate_distance_to(other_position)
+  def distance_to(other_position)
     y_distance = other_position.y - y
     x_distance = other_position.x - x
 
     x_distance.abs + y_distance.abs
   end
 
-  def calculate_distance_to_origin
-    calculate_distance_to(Position.new)
+  def distance_to_origin
+    distance_to(Position.new)
   end
 end

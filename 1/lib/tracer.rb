@@ -14,7 +14,7 @@ class Tracer
   end
 
   def blocks_away
-    current_position.calculate_distance_to(Position.new)
+    current_position.distance_to(Position.new)
   end
 
   def move(direction)
