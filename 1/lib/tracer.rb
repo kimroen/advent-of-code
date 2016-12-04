@@ -1,14 +1,20 @@
+require 'position'
+
 class Tracer
   attr_reader :current_position
   attr_reader :current_heading
 
-  def initialize(initial_position = { x: 0, y: 0 })
+  def initialize(initial_position = Position.new)
     @current_position = initial_position
     @current_heading = :north
   end
 
+  def current_coordinates
+    current_position.coordinates
+  end
+
   def blocks_away
-    current_position[:x].abs + current_position[:y].abs
+    current_position.x.abs + current_position.y.abs
   end
 
   def move(direction)
@@ -36,16 +42,9 @@ class Tracer
   end
 
   def walk_one_block
-    case current_heading
-    when :north
-      current_position[:y] += 1
-    when :west
-      current_position[:x] -= 1
-    when :south
-      current_position[:y] -= 1
-    when :east
-      current_position[:x] += 1
-    end
+    new_position = Position.new(current_coordinates)
+    new_position.walk(current_heading)
+    self.current_position = new_position
   end
 
   def move_heading_left
@@ -69,4 +68,5 @@ class Tracer
   private
 
   attr_writer :current_heading
+  attr_writer :current_position
 end
