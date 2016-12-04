@@ -18,36 +18,36 @@ class PositionTest < Minitest::Test
   def test_it_can_walk_north
     position = Position.new
 
-    position.walk(:north)
+    new_position = position.walk(:north)
 
     expected_coordinates = { x: 0, y: 1 }
-    assert_equal expected_coordinates, position.coordinates
+    assert_equal expected_coordinates, new_position.coordinates
   end
 
   def test_it_can_walk_south
     position = Position.new
 
-    position.walk(:south)
+    new_position = position.walk(:south)
 
     expected_coordinates = { x: 0, y: -1 }
-    assert_equal expected_coordinates, position.coordinates
+    assert_equal expected_coordinates, new_position.coordinates
   end
 
   def test_it_can_walk_east
     position = Position.new
 
-    position.walk(:east)
+    new_position = position.walk(:east)
 
     expected_coordinates = { x: 1, y: 0 }
-    assert_equal expected_coordinates, position.coordinates
+    assert_equal expected_coordinates, new_position.coordinates
   end
 
   def test_it_can_walk_west
     position = Position.new
 
-    position.walk(:west)
+    new_position = position.walk(:west)
 
     expected_coordinates = { x: -1, y: 0 }
-    assert_equal expected_coordinates, position.coordinates
+    assert_equal expected_coordinates, new_position.coordinates
   end
 end

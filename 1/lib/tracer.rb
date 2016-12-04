@@ -42,9 +42,8 @@ class Tracer
   end
 
   def walk_one_block
-    new_position = Position.new(current_coordinates)
-    new_position.walk(current_heading)
-    self.current_position = new_position
+    self.current_position =
+      current_position.walk(current_heading)
   end
 
   def move_heading_left

@@ -1,5 +1,5 @@
 class Position
-  attr_reader :x, :y
+  attr_accessor :x, :y
 
   def initialize(x: 0, y: 0)
     @x = x
@@ -11,19 +11,19 @@ class Position
   end
 
   def walk(direction)
+    new_position = Position.new(coordinates)
+
     case direction
     when :north
-      self.y += 1
+      new_position.y += 1
     when :south
-      self.y -= 1
+      new_position.y -= 1
     when :east
-      self.x += 1
+      new_position.x += 1
     when :west
-      self.x -= 1
+      new_position.x -= 1
     end
+
+    new_position
   end
-
-  private
-
-  attr_writer :x, :y
 end
