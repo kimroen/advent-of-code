@@ -58,6 +58,11 @@ class Trip
       current_position.walk(current_bearing)
   end
 
+  private
+
+  attr_writer :current_bearing
+  attr_writer :current_position
+
   def turn_left
     case current_bearing
     when :north then :west
@@ -75,9 +80,4 @@ class Trip
     when :east then :south
     end
   end
-
-  private
-
-  attr_writer :current_bearing
-  attr_writer :current_position
 end
