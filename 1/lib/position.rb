@@ -37,4 +37,8 @@ class Position
   def distance_to_origin
     distance_to(Position.new)
   end
+
+  def ==(other)
+    x == other.x && y == other.y
+  end
 end

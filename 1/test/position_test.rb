@@ -67,4 +67,14 @@ class PositionTest < Minitest::Test
 
     assert_equal 6, result
   end
+
+  def test_it_can_be_compared_to_other_positions
+    position = Position.new(x: 2, y: 1)
+    same_position = Position.new(x: 2, y: 1)
+    different_position = Position.new(x: 1, y: 1)
+
+    assert position == same_position
+    refute position == different_position
+    refute same_position == different_position
+  end
 end
