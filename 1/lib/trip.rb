@@ -32,13 +32,13 @@ class Trip
   def move(direction)
     case direction
     when Symbol
-      apply_bearing(direction)
+      turn(direction)
     when Numeric
       apply_steps(direction)
     end
   end
 
-  def apply_bearing(direction)
+  def turn(direction)
     self.current_bearing =
       if direction == :left
         move_bearing_left

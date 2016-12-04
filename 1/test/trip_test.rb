@@ -10,17 +10,17 @@ class TripTest < Minitest::Test
     assert_equal :north, Trip.new.current_bearing
   end
 
-  def test_it_can_rotate_left
+  def test_it_can_turn_left
     trip = Trip.new
-    trip.apply_bearing(:left)
-    trip.apply_bearing(:left)
+    trip.turn(:left)
+    trip.turn(:left)
     assert_equal :south, trip.current_bearing
   end
 
-  def test_it_can_rotate_right
+  def test_it_can_turn_right
     trip = Trip.new
-    trip.apply_bearing(:right)
-    trip.apply_bearing(:right)
+    trip.turn(:right)
+    trip.turn(:right)
     assert_equal :south, trip.current_bearing
   end
 
@@ -38,22 +38,22 @@ class TripTest < Minitest::Test
 
   def test_it_can_move_west
     trip = Trip.new
-    trip.apply_bearing(:left)
+    trip.turn(:left)
     trip.walk_one_block
     assert_equal({ x: -1, y: 0 }, trip.current_coordinates)
   end
 
   def test_it_can_move_south
     trip = Trip.new
-    trip.apply_bearing(:right)
-    trip.apply_bearing(:right)
+    trip.turn(:right)
+    trip.turn(:right)
     trip.walk_one_block
     assert_equal({ x: 0, y: -1 }, trip.current_coordinates)
   end
 
   def test_it_can_move_east
     trip = Trip.new
-    trip.apply_bearing(:right)
+    trip.turn(:right)
     trip.walk_one_block
     assert_equal({ x: 1, y: 0 }, trip.current_coordinates)
   end
