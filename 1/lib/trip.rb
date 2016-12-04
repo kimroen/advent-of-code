@@ -41,9 +41,9 @@ class Trip
   def turn(direction)
     self.current_bearing =
       if direction == :left
-        move_bearing_left
+        turn_left
       else
-        move_bearing_right
+        turn_right
       end
   end
 
@@ -58,7 +58,7 @@ class Trip
       current_position.walk(current_bearing)
   end
 
-  def move_bearing_left
+  def turn_left
     case current_bearing
     when :north then :west
     when :west then :south
@@ -67,7 +67,7 @@ class Trip
     end
   end
 
-  def move_bearing_right
+  def turn_right
     case current_bearing
     when :north then :east
     when :west then :north
