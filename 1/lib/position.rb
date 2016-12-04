@@ -16,6 +16,10 @@ class Position
       self.y += 1
     when :south
       self.y -= 1
+    when :east
+      self.x += 1
+    when :west
+      self.x -= 1
     end
   end
 
