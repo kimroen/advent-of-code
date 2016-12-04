@@ -3,25 +3,18 @@ require_relative 'position'
 class Trip
   attr_reader :current_position
   attr_reader :current_bearing
+  attr_reader :visited_positions
   attr_accessor :first_visited_twice
 
   def initialize(initial_position = Position.new)
     @current_position = initial_position
     @current_bearing = :north
+    @visited_positions = [initial_position]
   end
 
   def simulate(directions)
-    visited_positions = []
-
     directions.each do |direction|
       move(direction)
-      next unless first_visited_twice.nil?
-
-      if visited_positions.include? current_position
-        self.first_visited_twice = current_position
-      else
-        visited_positions << current_position
-      end
     end
   end
 
@@ -62,6 +55,11 @@ class Trip
 
   attr_writer :current_bearing
   attr_writer :current_position
+
+  def current_position=(new_position)
+    @current_position = new_position
+    visited_positions << new_position
+  end
 
   def turn_left
     case current_bearing
