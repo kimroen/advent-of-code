@@ -12,8 +12,12 @@ class Tracer
   end
 
   def move(direction)
-    apply_heading(direction[:direction])
-    apply_steps(direction[:steps])
+    case direction
+    when Symbol
+      apply_heading(direction)
+    when Numeric
+      apply_steps(direction)
+    end
   end
 
   def apply_heading(direction)

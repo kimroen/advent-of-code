@@ -42,18 +42,16 @@ class HqFinder
       .map do |direction_string|
         convert_to_direction(direction_string)
       end
+      .flatten
   end
 
-  # Takes a single direction and converts it into a direction hash
-  # For example, 'R2' turns in to { direction: :right, steps: 2 }
+  # Takes a single direction and converts it into a direction array
+  # For example, 'R2' turns in to `[:right, 2]`
   def convert_to_direction(direction_string)
     direction_character = direction_string[0]
     steps_string = direction_string[1..-1]
     direction = character_to_symbol(direction_character)
-    {
-      direction: direction,
-      steps: steps_string.to_i
-    }
+    [direction, steps_string.to_i]
   end
 
   def character_to_symbol(character)
