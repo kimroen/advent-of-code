@@ -2,12 +2,12 @@ require_relative 'position'
 
 class Trip
   attr_reader :current_position
-  attr_reader :current_heading
+  attr_reader :current_bearing
   attr_accessor :first_visited_twice
 
   def initialize(initial_position = Position.new)
     @current_position = initial_position
-    @current_heading = :north
+    @current_bearing = :north
   end
 
   def simulate(directions)
@@ -32,18 +32,18 @@ class Trip
   def move(direction)
     case direction
     when Symbol
-      apply_heading(direction)
+      apply_bearing(direction)
     when Numeric
       apply_steps(direction)
     end
   end
 
-  def apply_heading(direction)
-    self.current_heading =
+  def apply_bearing(direction)
+    self.current_bearing =
       if direction == :left
-        move_heading_left
+        move_bearing_left
       else
-        move_heading_right
+        move_bearing_right
       end
   end
 
@@ -55,11 +55,11 @@ class Trip
 
   def walk_one_block
     self.current_position =
-      current_position.walk(current_heading)
+      current_position.walk(current_bearing)
   end
 
-  def move_heading_left
-    case current_heading
+  def move_bearing_left
+    case current_bearing
     when :north then :west
     when :west then :south
     when :south then :east
@@ -67,8 +67,8 @@ class Trip
     end
   end
 
-  def move_heading_right
-    case current_heading
+  def move_bearing_right
+    case current_bearing
     when :north then :east
     when :west then :north
     when :south then :west
@@ -78,6 +78,6 @@ class Trip
 
   private
 
-  attr_writer :current_heading
+  attr_writer :current_bearing
   attr_writer :current_position
 end
