@@ -20,23 +20,23 @@ class HqFinderTest < Minitest::Test
   end
 
   def test_it_finds_distance
-    finder = HqFinder.find('R2, L3')
-    assert_equal 5, finder.endpoint.blocks_away
+    trip = HqFinder.preview_trip('R2, L3')
+    assert_equal 5, trip.last_position.blocks_away
   end
 
   def test_it_finds_another_distance
-    finder = HqFinder.find('R2, R2, R2')
-    assert_equal 2, finder.endpoint.blocks_away
+    trip = HqFinder.preview_trip('R2, R2, R2')
+    assert_equal 2, trip.last_position.blocks_away
   end
 
   def test_it_finds_a_third_distance
-    finder = HqFinder.find('R5, L5, R5, R3')
-    assert_equal 12, finder.endpoint.blocks_away
+    trip = HqFinder.preview_trip('R5, L5, R5, R3')
+    assert_equal 12, trip.last_position.blocks_away
   end
 
   def test_it_provides_the_location_first_visited_twice
-    finder = HqFinder.find('R8, R4, R4, R8')
-    assert_equal 4, finder.first_visited_twice.blocks_away
+    trip = HqFinder.preview_trip('R8, R4, R4, R8')
+    assert_equal 4, trip.first_visited_twice.blocks_away
   end
 end
 

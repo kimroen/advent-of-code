@@ -4,15 +4,15 @@ class HqFinder
   attr_reader :tracer
   attr_accessor :first_visited_twice
 
-  def self.find(directions_string)
-    new.find(directions_string)
+  def self.preview_trip(directions_string)
+    new.preview_trip(directions_string)
   end
 
   def initialize
     @tracer = Tracer.new
   end
 
-  def find(directions_string)
+  def preview_trip(directions_string)
     directions = convert_to_directions(directions_string)
 
     visited_locations = []
@@ -32,7 +32,7 @@ class HqFinder
     self
   end
 
-  def endpoint
+  def last_position
     tracer
   end
 
